@@ -1,39 +1,33 @@
 {
-  "name": "riv",
+  "name": "rivk",
   "type": "module",
   "author": "Jack-Zhang <zyj17715640603@gmail.com>",
   "version": "0.0.0",
-  "main": "./dist/index.mjs",
   "packageManager": "pnpm@7.1.7",
-  "description": "",
+  "description": "vue component scroll animation",
   "license": "MIT",
-  "funding":"https://github.com/sponsors/Jack-Zhang-1314",
-  "homepage": "https://github.com/Jack-Zhang-1314/ts-template#readme",
+  "funding": "https://github.com/sponsors/Jack-Zhang-1314",
+  "homepage": "https://github.com/Jack-Zhang-1314/Riv#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Jack-Zhang-1314/ts-template.git"
+    "url": "git+https://github.com/Jack-Zhang-1314/Riv"
   },
-  "bugs": "https://github.com/Jack-Zhang-1314/ts-template/issues",
+  "bugs": "https://github.com/Jack-Zhang-1314/Riv/issues",
   "keywords": [],
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "require": "./dist/index.cjs",
-      "import": "./dist/index.mjs"
+      "require": "./dist/index.cjs.js",
+      "import": "./dist/index.es.js"
     }
   },
+  "files": [
+    "dist"
+  ],
   "types": "./dist/index.d.ts",
-  "typesVersions": {
-    "*":{
-      "*":[
-        "./dist/*",
-        "./dist/index.d.ts"
-      ]
-    }
-  },
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc --noEmit && vite build",
+    "build": "vite build && vue-tsc -d --emitDeclarationOnly",
     "preview": "vite preview --port 5050",
     "test:unit": "vitest --environment jsdom",
     "typecheck": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",

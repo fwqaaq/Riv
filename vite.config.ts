@@ -4,6 +4,8 @@ import { fileURLToPath, URL } from 'url'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 
+const FilePath = (url: string) => fileURLToPath(new URL(url, import.meta.url))
+
 // https://vitejs.dev/config/
 export default defineConfig({
   base: './',
@@ -11,21 +13,34 @@ export default defineConfig({
     //关闭选项api
     __VUE_OPTIONS_API__: false,
   },
-  plugins: [
-    vue(),
-  ],
+  plugins: [vue()],
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url)),
+      '@': FilePath('../src'),
     },
   },
   build: {
+    lib: {
+      entry: FilePath('./src/index.ts'),
+      name: 'Riv',
+    },
     rollupOptions: {
-      output: {
-        entryFileNames: 'js/[name]-[hash].js',
-        chunkFileNames: 'js/[name]-[hash].js',
-        assetFileNames: '[ext]/[name]-[hash].[ext]',
-      },
+      external: ['vue'],
+      input: [FilePath('./src/index.ts')],
+      output: [
+        {
+          format: 'es',
+          entryFileNames: '[name].mjs',
+          preserveModules: true,
+          preserveModulesRoot: 'src',
+        },
+        {
+          format: 'cjs',
+          entryFileNames: '[name].cjs',
+          preserveModules: true,
+          preserveModulesRoot: 'src',
+        },
+      ],
     },
   },
 })
