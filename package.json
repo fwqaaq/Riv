@@ -17,32 +17,29 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "require": "./dist/index.cjs.js",
-      "import": "./dist/index.es.js"
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs"
     }
   },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "files": [
     "dist"
   ],
-  "types": "./dist/index.d.ts",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build && vue-tsc -d --emitDeclarationOnly",
-    "preview": "vite preview --port 5050",
-    "test:unit": "vitest --environment jsdom",
-    "typecheck": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
+    "packages:build": "pnpm -C packages build",
+    "play:dev": "pnpm -C playground dev",
+    "play:build": "vite build playground",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
     "prettier": "prettier --write .",
     "husky": "husky install",
-    "commit": "cz",
     "version": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 "
-  },
-  "dependencies": {
-    "vue": "^3.2.33"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.0.0",
     "@commitlint/config-conventional": "^17.0.0",
+    "@rivk/packages": "workspace:^0.0.0",
     "@rushstack/eslint-patch": "^1.1.0",
     "@types/jsdom": "^16.2.14",
     "@types/node": "^16.11.27",
@@ -58,9 +55,11 @@
     "eslint-plugin-vue": "^8.2.0",
     "husky": "^8.0.1",
     "jsdom": "^19.0.0",
+    "pkgroll": "^1.4.0",
     "prettier": "^2.5.1",
     "typescript": "~4.6.3",
     "vite": "^2.9.5",
+    "vue": "^3.2.33",
     "vue-tsc": "^0.34.7"
   },
   "config": {

@@ -16,7 +16,7 @@ export default defineConfig({
   plugins: [vue()],
   resolve: {
     alias: {
-      '@': FilePath('../src'),
+      '@': FilePath('./playground'),
     },
   },
   build: {
@@ -31,14 +31,10 @@ export default defineConfig({
         {
           format: 'es',
           entryFileNames: '[name].mjs',
-          preserveModules: true,
-          preserveModulesRoot: 'src',
         },
         {
           format: 'cjs',
           entryFileNames: '[name].cjs',
-          preserveModules: true,
-          preserveModulesRoot: 'src',
         },
       ],
     },
