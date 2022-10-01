@@ -78,10 +78,4 @@ const test = [
   padding: 0%;
   margin: 0%;
 }
-
-html,
-body,
-#app {
-  max-height: 100vh;
-}
 </style>

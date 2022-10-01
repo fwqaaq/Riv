@@ -2,10 +2,10 @@
   padding: 0;
   margin: 0;
 }
-
-.external{
+.external {
   background: black;
   overflow: hidden;
+  max-height: 100vh;
 }
 
 .horizontal-scroll-wrapper{
@@ -15,7 +15,6 @@
   max-height: 100vw;
   overscroll-behavior: none;
   transform-origin: 100% 0;
-  transform: rotate(-90deg) translate3d(50vh,-100vw,0);
   overflow: hidden auto;
   perspective: 1px;
   transform-style: preserve-3d;
@@ -82,8 +81,7 @@
 }
 
 img{
-  max-width: 45vh;
-  max-height: 50vh;
+  max-width: 40vh;
   transition: 0.5s;
   vertical-align: top;
   filter: saturate(40%) sepia(30%) hue-rotate(5deg);
