@@ -20,13 +20,13 @@ const test = [
     img: 'http://audio.fwqaq.us/banner/America3.jpg',
     link: 'https://www.google.com',
     alt: 'Paris Cafe Terrace',
-    animateHover: 'slower vertical',
+    animateHover: 'vertical',
   },
   {
     img: 'http://audio.fwqaq.us/banner/America4.jpg',
     link: 'https://www.google.com',
     alt: 'Paris Cafe Terrace',
-    animateHover: 'slower slower-down',
+    animateHover: 'slower-down',
   },
   {
     img: 'http://audio.fwqaq.us/banner/America5.jpg',
@@ -50,7 +50,7 @@ const test = [
     img: 'http://audio.fwqaq.us/banner/America8.jpg',
     link: 'https://www.google.com',
     alt: 'Paris Cafe Terrace',
-    animateHover: 'slower slower2',
+    animateHover: 'slower2',
   },
   {
     img: 'http://audio.fwqaq.us/banner/America9.jpg',
@@ -68,7 +68,7 @@ const test = [
     img: 'http://audio.fwqaq.us/banner/America11.jpg',
     link: 'https://www.google.com',
     alt: 'Paris Cafe Terrace',
-    animateHover: 'slower last',
+    animateHover: 'last',
   },
 ]
 </script>
