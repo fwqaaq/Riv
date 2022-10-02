@@ -60,6 +60,13 @@ const test = [
     img: 'http://audio.fwqaq.us/banner/America5.jpg',
     link: 'https://www.google.com',
     alt: 'Paris Cafe Terrace',
+    imgTransform: {
+      imgRotate,
+      imgScale: 0.8,
+      imgTranslateX,
+      imgTranslateY: '10rem',
+      imgTranslateZ: '0.15px',
+    },
   },
   {
     img: 'http://audio.fwqaq.us/banner/America6.jpg',
@@ -67,9 +74,9 @@ const test = [
     alt: 'Paris Cafe Terrace',
     imgTransform: {
       imgRotate,
-      imgScale: 0.8,
+      imgScale: 0.66,
       imgTranslateX,
-      imgTranslateY: '14vh',
+      imgTranslateY: '0',
       imgTranslateZ: '0.15px',
     },
   },
@@ -140,6 +147,6 @@ body,
   height: 100vh;
 }
 .range {
-  height: 55vh;
+  height: 100vh;
 }
 </style>
