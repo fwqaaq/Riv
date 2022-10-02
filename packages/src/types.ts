@@ -2,7 +2,6 @@ export interface imgLink {
   img: string
   link: string
   alt: string
-  animateHover: string
   imgTransform?: imgTransform
 }
 

@@ -2,10 +2,16 @@
   <div ref="external" class="external">
     <div class="horizontal-scroll-wrapper">
       <div
-        v-for="{ alt, link, img, animateHover } in imgs"
+        v-for="{ alt, link, img, imgTransform } in imgs"
         :key="img"
         class="img-wrapper"
-        :class="animateHover"
+        :style="{
+          transform: `rotate(${imgTransform?.imgRotate})
+        scale(${imgTransform?.imgScale})
+        translate3d(${imgTransform?.imgTranslateX},
+                    ${imgTransform?.imgTranslateY},
+                    ${imgTransform?.imgTranslateZ})`,
+        }"
       >
         <a :href="link" target="_blank" rel="noopener"
           ><img :src="img" :alt="alt" />
@@ -19,7 +25,6 @@
 import { ref, watch, toRefs } from 'vue'
 import type { imgLink, imgTransform } from '../types'
 
-// eslint-disable-next-line prettier/prettier
 const props = withDefaults(
   defineProps<{
     imgs: imgLink[]
@@ -42,14 +47,21 @@ const { imgRotate, imgTranslateX, imgTranslateY, imgTranslateZ, imgScale } =
 const external = ref<HTMLDivElement>()
 const transformX = ref('')
 const transformY = ref('')
+const imgWidth = ref('')
+const imgHover = ref('')
 watch(external, () => {
   const resize = new ResizeObserver((entries) => {
     entries.forEach((entry) => {
-      transformY.value = '480px'
-      if (entry.contentRect.height < 400) {
-        transformY.value = `${entry.contentRect.height * 1.6}px`
+      transformY.value = `${entry.contentRect.height / 1.6}px`
+      if (entry.contentRect.height < 700) {
+        transformY.value = `${entry.contentRect.height}px`
+        if (entry.contentRect.height < 440) {
+          transformY.value = `${entry.contentRect.height * 1.5}px`
+        }
       }
       transformX.value = `-${entry.contentRect.width}px`
+      imgWidth.value = `${entry.contentRect.height / 2.4}px`
+      imgHover.value = `${entry.contentRect.height / 1.2}px`
     })
   })
   resize.observe(external.value!)
@@ -58,6 +70,9 @@ watch(external, () => {
 
 <style scoped>
 @import '../styles/riv.css';
+.external {
+  max-height: 100%;
+}
 .horizontal-scroll-wrapper {
   transform: rotate(-90deg)
     translate3d(v-bind(transformY), v-bind(transformX), 0);
@@ -71,48 +86,15 @@ watch(external, () => {
       v-bind(imgTranslateZ)
     );
 }
-.slower {
-  transform: rotate(90deg) translateZ(-0.2px) scale(1.1) translateX(0%)
-    translateY(-10vh);
+img {
+  max-width: v-bind(imgWidth);
 }
 
-.slower1 {
-  transform: rotate(90deg) translateZ(-0.25px) scale(1.05) translateX(0%)
-    translateY(8vh);
+.img-wrapper {
+  min-height: v-bind(imgWidth);
 }
 
-.slower2 {
-  transform: rotate(90deg) translateZ(-0.3px) scale(1.3) translateX(0%)
-    translateY(2vh);
-}
-
-.slower-down {
-  transform: rotate(90deg) translateZ(-0.2px) scale(1.1) translateX(0%)
-    translateY(16vh);
-}
-
-.faster {
-  transform: rotate(90deg) translateZ(0.15px) scale(0.8) translateX(0%)
-    translateY(14vh);
-}
-
-.faster1 {
-  transform: rotate(90deg) translateZ(0.05px) scale(0.8) translateX(0%)
-    translateY(10vh);
-}
-
-.fastest {
-  transform: rotate(90deg) translateZ(0.22px) scale(0.7) translateX(-10vh)
-    translateY(-15vh);
-}
-
-.vertical {
-  transform: rotate(90deg) translateZ(-0.15px) scale(1.15) translateX(0%)
-    translateY(0%);
-}
-
-.last {
-  transform: rotate(90deg) translateZ(-0.2px) scale(1.1) translateX(25vh)
-    translateY(-8vh);
+.img-wrapper:hover {
+  min-height: v-bind(imgHover);
 }
 </style>

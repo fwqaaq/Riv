@@ -5,7 +5,6 @@
 .external {
   background: black;
   overflow: hidden;
-  max-height: 100vh;
 }
 
 .horizontal-scroll-wrapper{
@@ -25,12 +24,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 40vh;
   transition:1s;
-}
-
-.img-wrapper:hover{
-  min-height: 65vh;
 }
 
 .img-wrapper a{
@@ -40,10 +34,9 @@
 }
 
 img{
-  max-width: 40vh;
-  transition: 0.5s;
+  transition: 0.6s;
   vertical-align: top;
-  filter: saturate(40%) sepia(30%) hue-rotate(5deg);
+  filter: saturate(0%)  hue-rotate(0deg);
 }
 
 a:hover img{
