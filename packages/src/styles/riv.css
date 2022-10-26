@@ -6,7 +6,10 @@
   background: black;
   overflow: hidden;
 }
-
+::-webkit-scrollbar{
+  width: 0px;
+  height: 0px;
+}
 .horizontal-scroll-wrapper{
   display: flex;
   flex-direction: column;
