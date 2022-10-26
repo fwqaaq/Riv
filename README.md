@@ -11,7 +11,7 @@ npm install rivk
 > You need to use it in the Vue.
 
 ```js
-# main.js or main.ts
+// main.js or main.ts
 import { createApp } from 'vue'
 import Riv from 'rivk'
 import App from './App.vue'
@@ -30,7 +30,7 @@ Its structure is like this
 const test = [
   {
     img: 'http://audio.fwqaq.us/banner/America1.jpg', // link
-    link: 'https://www.google.com', // you want to jump adress
+    link: 'https://www.google.com', // you want to jump address
     alt: 'Paris Cafe Terrace', 
     imgTransform: {
       imgRotate: '90deg', // The angle at which the image is rotated
